@@ -39,3 +39,4 @@ task dist(type: Zip) {
 	from 'src/META-INF/license.txt'
 }
 
+assemble.dependsOn dist
