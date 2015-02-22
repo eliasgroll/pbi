@@ -1,0 +1,9 @@
+' {$STAMP BS1}
+
+myLabel:
+ SOUND 1, (70,100)
+ SOUND 1, (80,50)
+ SOUND 1, (90,50)
+ GOTO myLabel
+
+END

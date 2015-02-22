@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Starts the PiBasicInterpreter
+# Arguments:
+# 
+
+if hash java 2>/dev/null; then
+		DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+        java -jar $DIR/pbi.jar $1 $2 $3 $4
+else
+        echo "java command is not available. Need to install java first"
+fi
+
+
+# In order to get it running, on linux you have to:
+# chmod uga+x pbi
+# add this file's directory to the system path:
+# export PATH=/yourunzipdir:$PATH
+

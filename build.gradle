@@ -1,0 +1,41 @@
+apply plugin: 'java'
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src'
+		}
+		resources {
+			srcDir 'src'
+		}
+	}
+}
+
+jar {
+	baseName = 'pbi'
+    manifest {
+        attributes(
+        	"Main-Class": "de.bse.run.ConsoleMain",
+        	"Compile-Date": new java.text.SimpleDateFormat("yyyyMMdd HHmmss").format(new java.util.Date())
+        )
+    }
+}
+
+targetCompatibility = "1.5"
+sourceCompatibility = "1.5"
+
+task srcZip (type: Zip){
+	baseName = 'src'
+    from ('src') {
+    	exclude '**/.*'
+    }
+}
+
+task dist(type: Zip) {
+	baseName = 'pbi'
+	from jar
+	from srcZip
+	from 'shellscripts'
+	from 'src/META-INF/license.txt'
+}
+
