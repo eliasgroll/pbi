@@ -1,1 +1,8 @@
 language: java
+deploy:
+  provider: releases
+  api_key:
+    secure: I/z6EfEQmJeKyKpX6HB6kT6JpEjklwQLzAt6sVnI9MIcFWYJqz/NcyBXmZ3bD+uYDucBlyVxMGwa4wXJ4iDpBCb0TmkOurTDmxYjvCvvGQXqcsZZ7Ge7IU8tWG/COJGYq/RzLOS8JUr2QcKt5HXOdyY8bQDG3hPQv545b7UrnnA=
+  file: build/distributions/pbi.zip
+  on:
+    repo: EliasGroll/pbi
