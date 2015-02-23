@@ -217,7 +217,7 @@ SEROUT 1, 1, ("text", W0, "text")
 DEBUG "test formatters.."
 DIRS = %00000011
 PINS = $FF
-new  = @A
+new  = @A + 1
 ASSERT DIRS = 3
 ASSERT PINS = 255
 ASSERT new = 66

@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Console implements IConsole {
 
   @Override
-  public void printLn(String s) {
-    System.out.println(s);
+  public void printLn(String line) {
+    System.out.println(line);
   }
 
   @SuppressWarnings("resource")
@@ -27,12 +27,13 @@ public class Console implements IConsole {
         Runtime.getRuntime().exec("clear");
       }
     } catch (Exception e) {
+      //do nothing
     }
   }
 
   @Override
-  public void print(String s) {
-    System.out.print(s);
+  public void print(String line) {
+    System.out.print(line);
   }
 
 }

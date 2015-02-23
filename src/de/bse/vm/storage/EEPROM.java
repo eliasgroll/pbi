@@ -2,11 +2,20 @@ package de.bse.vm.storage;
 
 import de.bse.vm.var.Byte;
 
+/**
+ * EEPROM class which represents the EEPROM of the BS1
+ * @author Elias Groll, Jonas Reichmann
+ * @version 2.15
+ */
 public class EEPROM {
 
   public static int CMD = 204;
-  private Byte b = new Byte();
+  private Byte myByte = new Byte();
 
+  /**
+   * Constructor of the EEPROM class.
+   * @param commands already in the EEPROM
+   */
   public EEPROM(int commands) {
     this.storage = new Byte[256];
     for (int i = 0; i < storage.length; i++) {
@@ -19,18 +28,27 @@ public class EEPROM {
 
   private Byte[] storage;
 
+  /**
+   * Writes a specific value into a specific location in the EEPROM.
+   * @param location of the value to be written
+   * @param value to be written
+   * @return success
+   */
   public boolean write(long location, long value) {
-    b.setValue(location);
-    boolean retVal = (storage[(int) b.getValue()].getValue() == CMD);
-    storage[(int) b.getValue()].setValue(value);
+    myByte.setValue(location);
+    boolean retVal = (storage[(int) myByte.getValue()].getValue() == CMD);
+    storage[(int) myByte.getValue()].setValue(value);
     return retVal;
   }
 
   public long read(long location) {
-    b.setValue(location);
-    return storage[(int) b.getValue()].getValue();
+    myByte.setValue(location);
+    return storage[(int) myByte.getValue()].getValue();
   }
 
+  /**
+   * Creates a complete Dump of the EEPROM and returns it as a string.
+   */
   public String toString() {
     String memDump = "";
     
@@ -38,7 +56,9 @@ public class EEPROM {
       if (i % 16 == 0 && i != 0) {
         memDump += "\n";
       }
-      memDump += ((storage[i].toString().length() == 1) ? ("0" + storage[i].toString()) : (storage[i].toString())) + " ";
+      memDump += ((storage[i].toString().length() == 1)
+          ? ("0" + storage[i].toString())
+          : (storage[i].toString())) + " ";
       
     }
     

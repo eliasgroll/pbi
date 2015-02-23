@@ -2,8 +2,17 @@ package de.bse.vm.var;
 
 import de.bse.vm.var.format.Formatter;
 
+/**
+ * A variable which consists of individually accessible bits.
+ * 
+ * @author Elias Groll
+ * @version 2.15
+ */
 public class ConglomerateVariable implements IVariable {
-
+  /**
+   * @param bits
+   *          the bit[] which should be used to set a value.
+   */
   public ConglomerateVariable(Bit[] bits) {
     this.bits = bits;
     for (int i = 0; i < bits.length; i++) {
@@ -17,19 +26,19 @@ public class ConglomerateVariable implements IVariable {
   protected Bit[] bits;
   protected long maximum;
 
-  private String cutToByteLength(String s) {
+  private String cutToByteLength(String byteAsString) {
     String retVal = "";
-    if (s.length() > bits.length) {
-      int index = s.length() - bits.length;
-      retVal = s.substring(index);
-    } else if (s.length() < bits.length) {
-      int count = bits.length - s.length();
-      retVal = s;
+    if (byteAsString.length() > bits.length) {
+      int index = byteAsString.length() - bits.length;
+      retVal = byteAsString.substring(index);
+    } else if (byteAsString.length() < bits.length) {
+      int count = bits.length - byteAsString.length();
+      retVal = byteAsString;
       for (int i = 0; i < count; i++) {
         retVal = "0" + retVal;
       }
     } else {
-      retVal = s;
+      retVal = byteAsString;
     }
 
     return retVal;
@@ -41,6 +50,13 @@ public class ConglomerateVariable implements IVariable {
     return value;
   }
 
+  /**
+   * Get an individually accessible bit from the variable.
+   * 
+   * @param num
+   *          the index of the bit in the variable
+   * @return the bit at the specified index
+   */
   public Bit getBit(int num) {
     if (num >= 0 && num < bits.length) {
       return bits[num];
@@ -49,6 +65,7 @@ public class ConglomerateVariable implements IVariable {
     }
   }
 
+  @Override
   public long getValue() {
     long retVal = 0;
     long comp = 1;
@@ -63,17 +80,17 @@ public class ConglomerateVariable implements IVariable {
 
   }
 
-  public void setValue(long x) {
-    long val = x;
+  @Override
+  public void setValue(long value) {
+    long val = value;
     while (val < 0) {
-      val = (maximum - (x * -1));
+      val = (maximum - (value * -1));
     }
     String byteAsString = "";
     byteAsString = Long.toBinaryString(val);
     byteAsString = cutToByteLength(byteAsString);
     for (int index = 0; index < bits.length; index++) {
-      bits[index].setValue(Integer.parseInt(String.valueOf(byteAsString
-          .charAt(index))));
+      bits[index].setValue(Integer.parseInt(String.valueOf(byteAsString.charAt(index))));
     }
 
   }
@@ -85,25 +102,5 @@ public class ConglomerateVariable implements IVariable {
   public long getMaximum() {
     return maximum;
   }
-
-  // public static void main(String[] args) {
-  // Byte byte1 = new Byte(new Bit(0), new Bit(0), new Bit(0), new Bit(0),
-  // new Bit(0), new Bit(0), new Bit(0), new Bit(0));
-  // Byte byte2 = new Byte(new Bit(0), new Bit(0), new Bit(0), new Bit(0),
-  // new Bit(0), new Bit(0), new Bit(0), new Bit(0));
-  // Word word1 = new Word(byte1, byte2);
-  // @SuppressWarnings("resource")
-  // Scanner scanner = new Scanner(System.in);
-  // while (true) {
-  // int test = scanner.nextInt();
-  // word1.setValue(test);
-  // System.out.println("word1 " + word1.getValue() + "  " +
-  // word1.toString());
-  // System.out.println("byte1 " + byte1.getValue() + "  " +
-  // byte1.toString());
-  // System.out.println("byte2 " + byte2.getValue() + "  " +
-  // byte2.toString());
-  // }
-  // }
 
 }

@@ -2,14 +2,26 @@ package de.bse.vm;
 
 public class Settings {
   private boolean printInfo;
-  private final boolean emulate4MHZ;
+  private final boolean emulate4Mhz;
   private final boolean printInternComposition;
   private final boolean ignoreWarnings;
 
-  public Settings(boolean printInfo, boolean emulate4mhz,
-      boolean printInternComposition, boolean ignoreWarnings) {
+  /**
+   * Create new Settings for a runtime environment.
+   * 
+   * @param printInfo
+   *          print additional information for every cmd
+   * @param emulate4mhz
+   *          slow down the program to match the speed of a microcontroller
+   * @param printInternComposition
+   *          print the intern composition of the program (for developers)
+   * @param ignoreWarnings
+   *          ignore warnings
+   */
+  public Settings(boolean printInfo, boolean emulate4mhz, boolean printInternComposition,
+      boolean ignoreWarnings) {
     this.printInfo = printInfo;
-    emulate4MHZ = emulate4mhz;
+    emulate4Mhz = emulate4mhz;
     this.printInternComposition = printInternComposition;
     this.ignoreWarnings = ignoreWarnings;
   }
@@ -26,8 +38,8 @@ public class Settings {
     return printInfo;
   }
 
-  public boolean getEmulate4MHZ() {
-    return emulate4MHZ;
+  public boolean getEmulate4Mhz() {
+    return emulate4Mhz;
   }
 
   public boolean getPrintInternComposition() {
