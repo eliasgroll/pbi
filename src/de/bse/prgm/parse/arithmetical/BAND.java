@@ -1,14 +1,14 @@
 package de.bse.prgm.parse.arithmetical;
 
 /**
- * Represents a binary AND Operator in the form of an Arithmetical Operator
+ * Represents a binary AND Operator in the form of an Arithmetical Operator.
  * @author Jonas Reichmann
  * @version 2.15
  */
 public class BAND extends ArithmeticalOperator {
 
   /**
-   * Executes the calculation (&) and stores the result in retVal
+   * Executes the calculation (&) and stores the result in retVal.
    */
   @Override
   protected void exec() {
@@ -16,7 +16,7 @@ public class BAND extends ArithmeticalOperator {
   }
 
   /**
-   * Returns a new BAND instance
+   * Returns a new BAND instance.
    * @return new BAND instance
    */
   @Override

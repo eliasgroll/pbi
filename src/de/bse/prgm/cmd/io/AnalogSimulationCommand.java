@@ -6,13 +6,19 @@ import de.bse.util.ParserException;
 import de.bse.vm.Machine;
 import de.bse.vm.var.IVariable;
 
+/**
+ * Simulates an analog Command using a pin on the BS1 and
+ * prompts for a fake value when executed.
+ * @author Elias Groll
+ * @version 2.15
+ */
 public abstract class AnalogSimulationCommand extends IOCommand {
   /**
    * Constructor of the general analog simulation command
    * which uses 3 values to simulate an analog command on the BS1.
    * @param num the pin the command shall run on
-   * @param varString
-   * @param scale
+   * @param varString of the variable the simulation shall save its result
+   * @param scale of the analog simulation (0-255)
    */
   public AnalogSimulationCommand(String num, String varString, String scale) {
     super(num);

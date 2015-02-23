@@ -6,7 +6,20 @@ import de.bse.run.app.IConsole;
 import de.bse.vm.Machine;
 
 public class Pwm implements ICommand {
-
+/**
+ * Simulate analog pwm.
+ * 
+ * @param pin
+ * @param duty
+ * @param duration
+ */
+  /**
+   * Constructor of the PWM class which simulates a PWM
+   * command on the BS1.
+   * @param pin on which the PWM signal shall be created
+   * @param duty time of the PWM signal
+   * @param duration of the whole PWM signal
+   */
   public Pwm(String pin, int duty, int duration) {
     pause = new Pause(String.valueOf(duration));
     input = new Input(pin);

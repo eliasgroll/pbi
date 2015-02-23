@@ -8,7 +8,7 @@ package de.bse.prgm.parse.arithmetical;
 public class Max extends ArithmeticalOperator {
 
   /**
-   * Executes the calculation and stores the result in retVal
+   * Executes the calculation and stores the result in retVal.
    */
   @Override
   protected void exec() {
@@ -23,7 +23,7 @@ public class Max extends ArithmeticalOperator {
   }
 
   /**
-   * Returns a new Max instance
+   * Returns a new Max instance.
    * @return a new Max instance
    */
   @Override

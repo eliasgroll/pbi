@@ -10,8 +10,7 @@ public class HardwareError extends LineSpecificError {
 
   @Override
   public String errorMsg() {
-    return "[Error, line " + lineNumber + "]P" + pin
-        + " is not located at the bs1";
+    return "[Error, line " + lineNumber + "]P" + pin + " is not located at the bs1";
   }
 
 }

@@ -7,6 +7,12 @@ import de.bse.vm.Machine;
 import de.bse.vm.var.Constant;
 import de.bse.vm.var.IVariable;
 
+/**
+ * For command which loops through the following code block until it finds a next
+ * whilst increasing the iterator by stepSize until it hits is goal.
+ * @author Elias Groll, Jonas Reichmann
+ * @version 2.15
+ */
 public class For implements ICommand {
 
   private final String fromInit;
@@ -18,7 +24,13 @@ public class For implements ICommand {
   private IVariable to;
   private IVariable step;
 
-
+  /**
+   * Constructor of the For class which loops through the following code block
+   * until it hits a valid Next command or an END command.
+   * @param fromInit value to begin from
+   * @param goal value to reach
+   * @param stepSize how much the iterator shall increase with each cycle, can be negative
+   */
   public For(String fromInit, String goal, String stepSize) {
     this.fromInit = fromInit;
     this.goal = goal;

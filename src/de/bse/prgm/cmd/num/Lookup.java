@@ -2,7 +2,13 @@ package de.bse.prgm.cmd.num;
 
 import de.bse.run.app.IConsole;
 import de.bse.vm.Machine;
-
+/**
+ * Retrieves an item from a list based on the item's position in the list.
+ * 
+ * @author Jonas Reichmann
+ * @version 2.15
+ *
+ */
 public class Lookup extends SelectingCommand {
 
   public Lookup(String locationString, String varString, long[] values) {

@@ -8,7 +8,7 @@ package de.bse.prgm.parse.arithmetical;
 public class BNAND extends ArithmeticalOperator {
 
   /**
-   * Executes the calculation (&/) and stores the result in retVal
+   * Executes the calculation (&/) and stores the result in retVal.
    */
   @Override
   protected void exec() {
@@ -17,7 +17,7 @@ public class BNAND extends ArithmeticalOperator {
   
 
   /**
-   * Returns a new BNAND instance
+   * Returns a new BNAND instance.
    * @return new BNAND instance
    */
   @Override

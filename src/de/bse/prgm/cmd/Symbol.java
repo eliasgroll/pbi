@@ -1,10 +1,12 @@
 package de.bse.prgm.cmd;
 
+import de.bse.prgm.err.runtime.NullBytesVariableRuntimeError;
 import de.bse.run.app.IConsole;
 import de.bse.vm.Machine;
 import de.bse.vm.var.DynamicVariable;
 import de.bse.vm.var.IVariable;
 import de.bse.vm.var.Reference;
+
 /**
  * Reference on a given or new variable
  * 
@@ -37,6 +39,9 @@ public class Symbol implements ICommand {
     }
     IVariable reference = new Reference(referenced);
     machine.addIVariable(name, reference);
+    if (newObject == 0 && referencedObject == null) {
+      machine.getProgram().addError(new NullBytesVariableRuntimeError());
+    }
   }
 
   @Override

@@ -12,20 +12,20 @@ import de.bse.vm.var.IVariable;
 public abstract class ArithmeticalOperator implements IVariable {
 
   /**
-   * IVariable containing the left side of the term
+   * IVariable containing the left side of the term.
    */
   protected IVariable leftSide;
   /**
-   * IVariable containing the right side of the term
+   * IVariable containing the right side of the term.
    */
   protected IVariable rightSide;
   /**
-   * result in 16 bit in IVariable format
+   * result in 16 bit in IVariable format.
    */
   protected IVariable retVal = new DynamicVariable(16);
 
   /**
-   * Calculates left and right side and returns the result as a 16-bit IVariable
+   * Calculates left and right side and returns the result as a 16-bit IVariable.
    * @param leftSide left side of the term
    * @param rightSide right side of the term
    * @return result (16-bit IVariable)
@@ -37,7 +37,7 @@ public abstract class ArithmeticalOperator implements IVariable {
   }
 
   /**
-   * Initializes the left and right side of the term
+   * Initializes the left and right side of the term.
    * @param leftSide of the term
    * @param rightSide right side of the term
    */
@@ -47,12 +47,12 @@ public abstract class ArithmeticalOperator implements IVariable {
   }
 
   /**
-   * Executes the calculation
+   * Executes the calculation.
    */
   protected abstract void exec();
 
   /**
-   * Returns the result of the calculation
+   * Returns the result of the calculation.
    * [executes calculate(leftSide, rightSide).getValue();]
    * @return value of the calculation
    */
@@ -63,7 +63,7 @@ public abstract class ArithmeticalOperator implements IVariable {
 
   /**
    * Attemps to set a value, but since ArithmeticalOperator is a
-   * constant it will always throw a ParserException
+   * constant it will always throw a ParserException.
    */
   @Override
   public void setValue(long value) {
@@ -71,7 +71,7 @@ public abstract class ArithmeticalOperator implements IVariable {
   }
 
   /**
-   * Creates an Arithmetical Operator
+   * Creates a new ArithmeticalOperator. - class intern factory
    * @return ArithmeticalOperator being created
    */
   public abstract ArithmeticalOperator create();

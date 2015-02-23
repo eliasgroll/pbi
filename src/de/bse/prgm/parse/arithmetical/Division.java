@@ -8,7 +8,7 @@ package de.bse.prgm.parse.arithmetical;
 public class Division extends ArithmeticalOperator {
 
   /**
-   * Executes the calculation and stores the result in retVal
+   * Executes the calculation and stores the result in retVal.
    */
   @Override
   protected void exec() {
@@ -16,7 +16,7 @@ public class Division extends ArithmeticalOperator {
   }
 
   /**
-   * Returns a new Division instance
+   * Returns a new Division instance.
    * @return a new Division instance
    */
   @Override

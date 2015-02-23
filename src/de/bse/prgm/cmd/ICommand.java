@@ -4,7 +4,7 @@ import de.bse.run.app.IConsole;
 import de.bse.vm.Machine;
 
 /**
- * The basic struct of a command in the PiBasicInterpreter
+ * The basic structure of a command in the PiBasicInterpreter
  * 
  * @author Elias Groll, Jonas Reichmann
  * @version 2.15

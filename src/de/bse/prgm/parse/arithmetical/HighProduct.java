@@ -9,7 +9,7 @@ package de.bse.prgm.parse.arithmetical;
 public class HighProduct extends ArithmeticalOperator {
 
   /**
-   * Executes the calculation (**) and stores the result in retVal
+   * Executes the calculation (**) and stores the result in retVal.
    */
   @Override
   protected void exec() {
@@ -17,7 +17,7 @@ public class HighProduct extends ArithmeticalOperator {
   }
 
   /**
-   * Returns a new HighProduct instance
+   * Returns a new HighProduct instance.
    * @return a new HighProduct instance
    */
   @Override

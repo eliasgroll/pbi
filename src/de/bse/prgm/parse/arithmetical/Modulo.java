@@ -8,7 +8,7 @@ package de.bse.prgm.parse.arithmetical;
 public class Modulo extends ArithmeticalOperator {
 
   /**
-   * Executes the calculation (//) and stores the result in retVal
+   * Executes the calculation (//) and stores the result in retVal.
    */
   @Override
   protected void exec() {
@@ -16,7 +16,7 @@ public class Modulo extends ArithmeticalOperator {
   }
 
   /**
-   * Returns a new Modulo instance
+   * Returns a new Modulo instance.
    * @return a new Modulo instance
    */
   @Override

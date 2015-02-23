@@ -8,7 +8,7 @@ package de.bse.prgm.parse.arithmetical;
 public class BNOR extends ArithmeticalOperator {
 
   /**
-   * Executes the calculation (|/) and stores the result in retVal
+   * Executes the calculation (|/) and stores the result in retVal.
    */
   @Override
   protected void exec() {
@@ -16,7 +16,7 @@ public class BNOR extends ArithmeticalOperator {
   }
 
   /**
-   * Returns a new BNOR instance
+   * Returns a new BNOR instance.
    * @return new BNOR instance
    */
   @Override

@@ -7,6 +7,13 @@ import de.bse.util.ParserException;
 import de.bse.vm.Machine;
 import de.bse.vm.var.IVariable;
 
+/**
+ * Generates a pseudo-random value based on the value of a variable and stores the generated value
+ * in the variable.
+ * 
+ * @author Elias Groll
+ * @version 2.15
+ */
 public class Random extends HotspotCompiledCommand {
 
   public Random(String varString) {
@@ -24,10 +31,9 @@ public class Random extends HotspotCompiledCommand {
     if (var != null) {
       try {
         random.setSeed(var.getValue());
-        var.setValue((short)random.nextInt());
+        var.setValue((short) random.nextInt());
       } catch (ParserException e) {
-        machine.getProgram().addError(
-            new CannotChangeAConstantValueRuntimeError(varString));
+        machine.getProgram().addError(new CannotChangeAConstantValueRuntimeError(varString));
       }
     }
   }

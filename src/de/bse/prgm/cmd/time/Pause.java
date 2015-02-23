@@ -35,7 +35,7 @@ public class Pause extends HotspotCompiledCommand {
     try {
       Thread.sleep((long) time);
     } catch (InterruptedException e) {
-
+      // a failed pause is not important for the program execution - do nothing
     }
 
   }

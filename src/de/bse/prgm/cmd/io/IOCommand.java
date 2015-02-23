@@ -5,6 +5,11 @@ import de.bse.run.app.IConsole;
 import de.bse.vm.Machine;
 import de.bse.vm.var.IVariable;
 
+/**
+ * Input/Output Command on the BS1 which uses HotspotCompilation.
+ * @author Elias Groll
+ * @version 2.15
+ */
 public abstract class IOCommand extends HotspotCompiledCommand {
 
   protected final String num;

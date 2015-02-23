@@ -1,15 +1,14 @@
 package de.bse.prgm.struct;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.bse.prgm.cmd.ICommand;
 import de.bse.prgm.err.IError;
 import de.bse.prgm.war.IWarning;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Program {
-  private List<IError> errors = new ArrayList<IError>(); // only for a sorted
-                                                         // output
+  private List<IError> errors = new ArrayList<IError>(); // only for a sorted output
   private List<ICommand> commands = new ArrayList<ICommand>();
   private List<IWarning> warnings = new ArrayList<IWarning>();
 
@@ -41,6 +40,10 @@ public class Program {
     this.commands = commands;
   }
 
+  /**
+   * Adds an ProgramInstance to the Program.
+   * @param instance to be added
+   */
   public void addInstance(final ProgramInstance instance) {
     if (instance.getErrors() != null) {
       errors.addAll(instance.getErrors());
@@ -65,10 +68,10 @@ public class Program {
   public String toString() {
     String retVal = "commands: " + commands.size() + ";" + " warnings: "
         + warnings.size() + ";" + " errors: " + (errors.size()) + "\n\n";
-    int i = 0;
+    int cycle = 0;
     for (ICommand cmd : commands) {
-      i++;
-      retVal += "[" + i + "]" + (cmd == null ? "null" : cmd.toString()) + "\n";
+      cycle++;
+      retVal += "[" + cycle + "]" + (cmd == null ? "null" : cmd.toString()) + "\n";
     }
     return retVal;
 

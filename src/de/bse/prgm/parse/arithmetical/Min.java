@@ -8,7 +8,7 @@ package de.bse.prgm.parse.arithmetical;
 public class Min extends ArithmeticalOperator {
 
   /**
-   * Executes the calculation and stores the result in retVal
+   * Executes the calculation and stores the result in retVal.
    */
   @Override
   protected void exec() {
@@ -23,7 +23,7 @@ public class Min extends ArithmeticalOperator {
   }
   
   /**
-   * Returns a new Min instance
+   * Returns a new Min instance.
    * @return a new Min instance
    */
   @Override

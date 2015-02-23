@@ -6,14 +6,25 @@ import de.bse.run.app.IConsole;
 import de.bse.vm.Machine;
 import de.bse.vm.Speaker;
 
+/**
+ * Sound class which uses vm.Speaker to give out sounds
+ * similar to the BS1 sounds whilst using the same syntax.
+ * @author Elias Groll, Jonas Reichmann
+ * @version 2.15
+ */
 public class Sound extends IOCommand {
 
+  /**
+   * Constructor of the Sound class used to create sounds
+   * similar to the BS1
+   * @param num pin on which the sound shall be played on (only virtual)
+   * @param note to be played (freq = 1 / 0.000095 + ((127-note) * 0,000083))
+   * @param duration of the note to be played
+   */
   public Sound(String num, String note, String duration) {
     super(num);
     this.noteString = note;
     this.durationString = duration;
-//    this.duration = duration;
-//    this.frequency = (int) (1 / (0.000095 + ((127 - note) * 0.000083)));
   }
 
   private String noteString;
@@ -36,7 +47,7 @@ public class Sound extends IOCommand {
           machine.getProgram().addWarning(new IWarning() {
             @Override
             public String warningMsg() {
-                     return "[Warn]The audio output could have been interrupted";
+              return "[Warn]The audio output could have been interrupted";
             }
           });
         }
@@ -46,7 +57,8 @@ public class Sound extends IOCommand {
   
   private void initVars(Machine machine) {
     this.duration = (int) machine.parseIVariable(durationString).getValue();
-    this.frequency = (int) (1 / (0.000095 + ((127 - (int) machine.parseIVariable(noteString).getValue()) * 0.000083)));
+    int note = (int) machine.parseIVariable(noteString).getValue();
+    this.frequency = (int) (1 / (0.000095 + ((127 - note) * 0.000083)));
   }
 
   @Override

@@ -5,6 +5,12 @@ import de.bse.run.app.IConsole;
 import de.bse.util.ParserException;
 import de.bse.vm.Machine;
 
+/**
+ * Reads a value on a location in EEPROM and stores it into a variable.
+ * 
+ * @author Elias Groll
+ * @version 2.15
+ */
 public class Read extends AccessCommand {
 
   public Read(String locationString, String varString) {
@@ -17,9 +23,8 @@ public class Read extends AccessCommand {
     try {
       var.setValue(machine.getEeprom().read(location.getValue()));
     } catch (ParserException e) {
-      machine.getProgram().addError(new CannotChangeAConstantValueRuntimeError(
-          varString));
-    } catch (NullPointerException e){
+      machine.getProgram().addError(new CannotChangeAConstantValueRuntimeError(varString));
+    } catch (NullPointerException e) {
       // nothing to do here, machine already added a Error
     }
 
@@ -27,8 +32,8 @@ public class Read extends AccessCommand {
 
   @Override
   public String infoMsg() {
-    return "[Info]Read from \"" + locationString + "\"  and store it at \""
-        + varString + "\" in EEPROM";
+    return "[Info]Read from \"" + locationString + "\"  and store it at \"" + varString
+        + "\" in EEPROM";
   }
 
 }

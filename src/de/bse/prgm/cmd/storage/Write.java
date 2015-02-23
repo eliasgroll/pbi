@@ -4,6 +4,12 @@ import de.bse.prgm.war.MemOverwriteWarning;
 import de.bse.run.app.IConsole;
 import de.bse.vm.Machine;
 
+/**
+ * Writes a value to a location in EEPROM and stores it into a variable.
+ * 
+ * @author Elias Groll
+ * @version 2.15
+ */
 public class Write extends AccessCommand {
 
   public Write(String locationString, String varString) {
@@ -25,8 +31,7 @@ public class Write extends AccessCommand {
 
   @Override
   public String infoMsg() {
-    return "[Info]Write at \"" + locationString + "\"  and store \""
-        + varString + "\" in EEPROM";
+    return "[Info]Write at \"" + locationString + "\"  and store \"" + varString + "\" in EEPROM";
   }
 
 }

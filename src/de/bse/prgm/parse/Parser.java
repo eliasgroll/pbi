@@ -33,7 +33,7 @@ import de.bse.prgm.cmd.loop.Next;
 import de.bse.prgm.cmd.num.Lookdown;
 import de.bse.prgm.cmd.num.Lookup;
 import de.bse.prgm.cmd.num.Random;
-import de.bse.prgm.cmd.storage.EEPROM;
+import de.bse.prgm.cmd.storage.Eeprom;
 import de.bse.prgm.cmd.storage.Read;
 import de.bse.prgm.cmd.storage.Write;
 import de.bse.prgm.cmd.time.Pause;
@@ -48,6 +48,7 @@ import de.bse.util.ParserException;
 
 /**
  * Parser which parses each line and creates a respective ProgramInstance
+ * 
  * @author Jonas Reichmann
  * @version 2.15
  */
@@ -61,8 +62,9 @@ public class Parser {
   }
 
   /**
-   * Parses a given line and returns a ProgramInstance containing the command
-   * and / or the errors created by the line.
+   * Parses a given line and returns a ProgramInstance containing the command and / or the errors
+   * created by the line.
+   * 
    * @param line
    * @param lineNumber
    * @return
@@ -96,8 +98,7 @@ public class Parser {
       return parseToggle(line, lineNumber);
     } else if (line.startsWith("OUTPUT")) {
       return parseOutput(line, lineNumber);
-    } else if (line.equals("INSTRUCT") || line.equals("BREAKPOINT")
-        || line.equals("BP")) {
+    } else if (line.equals("INSTRUCT") || line.equals("BREAKPOINT") || line.equals("BP")) {
       return parseInstruct(line, lineNumber);
     } else if (line.startsWith("IF")) {
       return parseIf(line, lineNumber);
@@ -136,7 +137,7 @@ public class Parser {
     } else if (line.startsWith("WRITE")) {
       return parseWrite(line, lineNumber);
     } else if (line.startsWith("EEPROM")) {
-      return parseEEPROM(line, lineNumber);
+      return parseEeprom(line, lineNumber);
     } else if (line.startsWith("RANDOM")) {
       return parseRandom(line, lineNumber);
     } else if (line.startsWith("ACTIVATEINFO")) {
@@ -158,7 +159,8 @@ public class Parser {
   }
 
   /**
-   * Parses a RETURN command
+   * Parses a RETURN command.
+   * 
    * @return ProgramInstance containing the RETURN command and possible errors
    */
   private static ProgramInstance parseReturn() {
@@ -168,9 +170,12 @@ public class Parser {
   }
 
   /**
-   * Parses an Allocation
-   * @param line with the allocation
-   * @param lineNumber in which the allocation stands
+   * Parses an Allocation.
+   * 
+   * @param line
+   *          with the allocation
+   * @param lineNumber
+   *          in which the allocation stands
    * @return ProgramInstance returning the Allocation and possible errors
    */
   public static ProgramInstance parseAllocation(String line, int lineNumber) {
@@ -184,22 +189,27 @@ public class Parser {
   }
 
   /**
-   * Parses an INSTRUCT command
-   * @param command to be instructed
-   * @param lineNumber in which the INSTRUCT command stands in
+   * Parses an INSTRUCT command.
+   * 
+   * @param command
+   *          to be instructed
+   * @param lineNumber
+   *          in which the INSTRUCT command stands in
    * @return ProgramInstance containing the INSTRUCT and possible errors
    */
   private static ProgramInstance parseInstruct(String command, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
-    retVal.setCommand(command.equals("BREAKPOINT") ? new Instruct(lineNumber)
-        : new Instruct());
+    retVal.setCommand(command.equals("BREAKPOINT") ? new Instruct(lineNumber) : new Instruct());
     return retVal;
   }
 
   /**
-   * Parses an IF command
-   * @param line with the IF command an parameters
-   * @param lineNumber in which the IF command stands
+   * Parses an IF command.
+   * 
+   * @param line
+   *          with the IF command an parameters
+   * @param lineNumber
+   *          in which the IF command stands
    * @return ProgramInstance containing the IF command and possible errors
    */
   private static ProgramInstance parseIf(String line, int lineNumber) {
@@ -208,8 +218,7 @@ public class Parser {
       retVal.addError(new SyntaxError(lineNumber));
     } else {
       String expression = line.substring(2, line.indexOf("THEN") - 1);
-      String label = line.substring(line.indexOf("THEN") + 4, line.length())
-          .trim();
+      String label = line.substring(line.indexOf("THEN") + 4, line.length()).trim();
       retVal.setCommand(new If(expression, label));
     }
 
@@ -218,9 +227,12 @@ public class Parser {
   }
 
   /**
-   * Parses a PAUSE command and its parameters
-   * @param line with the PAUSE command and parameters
-   * @param lineNumber in which the PAUSE command is in
+   * Parses a PAUSE command and its parameters.
+   * 
+   * @param line
+   *          with the PAUSE command and parameters
+   * @param lineNumber
+   *          in which the PAUSE command is in
    * @return ProgramInstance with the PAUSE command and possible errors
    */
   private static ProgramInstance parsePause(String line, int lineNumber) {
@@ -237,9 +249,12 @@ public class Parser {
   }
 
   /**
-   * Parses a HIGH command and its parameters
-   * @param line with the HIGH command and its parameters
-   * @param lineNumber in which the HIGH commands is in
+   * Parses a HIGH command and its parameters.
+   * 
+   * @param line
+   *          with the HIGH command and its parameters
+   * @param lineNumber
+   *          in which the HIGH commands is in
    * @return ProgramInstance containing the HIGH command and possible errors
    */
   private static ProgramInstance parseHigh(String line, int lineNumber) {
@@ -257,8 +272,11 @@ public class Parser {
 
   /**
    * Parses a SOUND command and its parameters.
-   * @param line containing the SOUND command and its parameters
-   * @param lineNumber in which the SOUND command is in
+   * 
+   * @param line
+   *          containing the SOUND command and its parameters
+   * @param lineNumber
+   *          in which the SOUND command is in
    * @return ProgramInstance containing the SOUND command and possible errors
    */
   private static ProgramInstance parseSound(String line, int lineNumber) {
@@ -275,7 +293,7 @@ public class Parser {
       String pin = res[0].replaceAll("\\s*", "").trim();
       String note = res[1].replaceAll("\\s*\\(\\s*", "").trim();
       String duration = res[2].replaceAll("\\s*\\)\\s*", "").trim();
-      
+
       sound = new Sound(pin, note, duration);
       retVal.setCommand(sound);
     } catch (Exception e) {
@@ -285,9 +303,12 @@ public class Parser {
   }
 
   /**
-   * Parses a DEBUG command and its parameters
-   * @param line containing the DEBUG command and its parameters
-   * @param lineNumber in which the DEBUG command is in
+   * Parses a DEBUG command and its parameters.
+   * 
+   * @param line
+   *          containing the DEBUG command and its parameters
+   * @param lineNumber
+   *          in which the DEBUG command is in
    * @return ProgramInstance containing the DEBUG command and possible errors
    */
   private static ProgramInstance parseDebug(String line, int lineNumber) {
@@ -295,7 +316,7 @@ public class Parser {
     Debug debug = null;
     try {
       line = line.replaceAll("\\s*DEBUG\\s*", "");
-      String[] params = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"); // splits only comments not in strings
+      String[] params = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
       debug = new Debug(params);
       retVal.setCommand(debug);
     } catch (Exception e) {
@@ -305,10 +326,13 @@ public class Parser {
   }
 
   /**
-   * Parses a SEROUT command and its parameters
-   * @param line containing the SEROUT command and its parameters
-   * @param lineNumber in which the SEROUT command is in
-   * @return ProgramInstance containing the SEROUT command 
+   * Parses a SEROUT command and its parameters.
+   * 
+   * @param line
+   *          containing the SEROUT command and its parameters
+   * @param lineNumber
+   *          in which the SEROUT command is in
+   * @return ProgramInstance containing the SEROUT command
    */
   private static ProgramInstance parseSerout(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
@@ -321,8 +345,7 @@ public class Parser {
       if (pin < 0 || pin > 7) {
         retVal.addError(new HardwareError(lineNumber, pin));
       }
-      String rawData = rest.substring(rest.indexOf("(") + 1,
-          rest.lastIndexOf(")"));
+      String rawData = rest.substring(rest.indexOf("(") + 1, rest.lastIndexOf(")"));
       String[] data = rawData.split(",");
       serout = new Serout(pin, baudRate, data);
       retVal.setCommand(serout);
@@ -333,9 +356,12 @@ public class Parser {
   }
 
   /**
-   * Parses a LOW command and its parameters
-   * @param line containing the LOW command and its parameters
-   * @param lineNumber in which the LOW command is in
+   * Parses a LOW command and its parameters.
+   * 
+   * @param line
+   *          containing the LOW command and its parameters
+   * @param lineNumber
+   *          in which the LOW command is in
    * @return ProgramInstance containing the LOW command and possible errors
    */
   private static ProgramInstance parseLow(String line, int lineNumber) {
@@ -352,9 +378,12 @@ public class Parser {
   }
 
   /**
-   * Parses a TOGGLE command and its parameters
-   * @param line containing the TOGGLE command and its parameters
-   * @param lineNumber in which the TOGGLE command is in
+   * Parses a TOGGLE command and its parameters.
+   * 
+   * @param line
+   *          containing the TOGGLE command and its parameters
+   * @param lineNumber
+   *          in which the TOGGLE command is in
    * @return ProgramInstance containing the TOGGLE command and possible errors
    */
   private static ProgramInstance parseToggle(String line, int lineNumber) {
@@ -371,9 +400,12 @@ public class Parser {
   }
 
   /**
-   * Parses a REVERSE command and its parameters
-   * @param line containing the REVERSE command and its parameters
-   * @param lineNumber in which the REVERSE command is in
+   * Parses a REVERSE command and its parameters.
+   * 
+   * @param line
+   *          containing the REVERSE command and its parameters
+   * @param lineNumber
+   *          in which the REVERSE command is in
    * @return ProgramInstance containing the REVERSE command and possible errors
    */
   private static ProgramInstance parseReverse(String line, int lineNumber) {
@@ -388,12 +420,15 @@ public class Parser {
     retVal.setCommand(reverse);
     return retVal;
   }
-  
+
   /**
-   * Parses an OUTPUT command and its parameters
-   * @param line containing the OUTPUT command and its parameters
-   * @param lineNumber in which the OUPUT command is in
-   * @return ProgramInstance containing the OUTPUT command and possible erros
+   * Parses an OUTPUT command and its parameters.
+   * 
+   * @param line
+   *          containing the OUTPUT command and its parameters
+   * @param lineNumber
+   *          in which the OUPUT command is in
+   * @return ProgramInstance containing the OUTPUT command and possible errosr
    */
   private static ProgramInstance parseOutput(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
@@ -408,6 +443,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses an INPUT command and its parameters.
+   * 
+   * @param line
+   *          containing the INPUT command and its parameters
+   * @param lineNumber
+   *          in which the INPUT command is in
+   * @return ProgramInstance containing the INPUT command and possible errors
+   */
   private static ProgramInstance parseInput(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Input input = null;
@@ -421,6 +465,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a label.
+   * 
+   * @param line
+   *          containing the Label
+   * @param lineNumber
+   *          in which the label is in
+   * @return ProgramInstance containing the label and possible errors
+   */
   private static ProgramInstance parseLabel(String line, int lineNumber) {
     String name = line.substring(0, line.length() - 1).trim();
     Label label = new Label(name);
@@ -431,52 +484,86 @@ public class Parser {
 
   }
 
+  /**
+   * Parses a GOTO command and its parameters.
+   * 
+   * @param line
+   *          containing the GOTO command and its parameters
+   * @param lineNumber
+   *          in which the GOTO command is in
+   * @return ProgramInstance containing the GOTO command and possible errors
+   */
   private static ProgramInstance parseGoto(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     String name = line.substring("GOTO".length()).trim();
-    Goto g = new Goto(name);
-    retVal.setCommand(g);
+    Goto myGoto = new Goto(name);
+    retVal.setCommand(myGoto);
     return retVal;
   }
 
-  private static ProgramInstance parseGosub(String line, int lineNumber)
-      throws ParserException {
+  /**
+   * Parses a GOSUB command and its parameters.
+   * 
+   * @param line
+   *          containing the GOSUB command and its parameters
+   * @param lineNumber
+   *          in which the GOSUB command is in
+   * @return ProgramInstance containing the GOSUB command and possible errors
+   */
+  private static ProgramInstance parseGosub(String line, int lineNumber) throws ParserException {
     ProgramInstance retVal = new ProgramInstance();
     String name = line.substring("GOSUB".length()).trim();
     try {
-      Gosub g = new Gosub(name);
-      retVal.setCommand(g);
+      Gosub myGosub = new Gosub(name);
+      retVal.setCommand(myGosub);
     } catch (ParserException e) {
       retVal.addError(new TooManySubroutineCallsError());
     }
     return retVal;
   }
 
+  /**
+   * Parses a FOR command and its parameters.
+   * 
+   * @param line
+   *          containing the FOR command and its parameters
+   * @param lineNumber
+   *          in which the FOR command is in
+   * @return ProgramInstance containing the FOR command and possible errors
+   */
   private static ProgramInstance parseFor(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
-    For for_ = null;
+    For myFor = null;
     String init = "";
     String to = "";
     String step = "";
     try {
       line = line.replaceAll("\\s*FOR\\s*", "");
       init = line.replaceAll("\\s*", "").replaceAll("\\s*TO.*", "").trim();
-      to = line.replaceAll(".*TO\\s*", "").replaceAll("\\s+(STEP)?.*", "")
-          .trim();
+      to = line.replaceAll(".*TO\\s*", "").replaceAll("\\s+(STEP)?.*", "").trim();
       if (line.contains("STEP")) {
         step = line.replaceAll(".*STEP\\s*", "").trim();
       } else {
         step = "1";
       }
-      for_ = new For(init, to, step);
+      myFor = new For(init, to, step);
 
-      retVal.setCommand(for_);
+      retVal.setCommand(myFor);
     } catch (Exception e) {
       retVal.addError(new SyntaxError(lineNumber));
     }
     return retVal;
   }
 
+  /**
+   * Parses a NEXT command and its parameters.
+   * 
+   * @param line
+   *          containing the NEXT command and its parameters
+   * @param lineNumber
+   *          in which the NEXT command is in
+   * @return ProgramInstance containing the NEXT command and possible errors
+   */
   private static ProgramInstance parseNext(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Next next = null;
@@ -491,12 +578,30 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses an END command.
+   * 
+   * @param line
+   *          containing the END
+   * @param lineNumber
+   *          in which the END is in
+   * @return ProgramInstance containing the END command and possible errors
+   */
   private static ProgramInstance parseEnd() {
     ProgramInstance retVal = new ProgramInstance();
     retVal.setCommand(new End());
     return retVal;
   }
 
+  /**
+   * Parses a SYMBOL command and its parameters.
+   * 
+   * @param line
+   *          containing the SYMBOL command and its parameters
+   * @param lineNumber
+   *          in which the SYMBOL command is in
+   * @return ProgramInstance containing the SYMBOL command and possible errors
+   */
   private static ProgramInstance parseSymbol(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Symbol symbol = null;
@@ -521,13 +626,22 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a LOOKUP command and its parameters.
+   * 
+   * @param line
+   *          containing the LOOKUP command and its parameters
+   * @param lineNumber
+   *          in which the LOOKUP command is in
+   * @return ProgramInstance containing the LOOKUP command and possible errors
+   */
   private static ProgramInstance parseLookup(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Lookup lookup = null;
 
     try {
       String data = line.replaceAll("\\s*LOOKUP\\s*", "").trim();
-      String args[] = data.split("[\\(\\)]");
+      String[] args = data.split("[\\(\\)]");
       String target = args[0].replaceAll(",", "").trim();
       String rawValues = args[1].trim();
       String result = args[2].replaceAll(",", "").trim();
@@ -556,13 +670,22 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a LOOKDOWN command and its parameters.
+   * 
+   * @param line
+   *          containing the LOOKDOWN command and its parameters
+   * @param lineNumber
+   *          in which the LOOKDOWN command is in
+   * @return ProgramInstance containing the LOOKDOWN command and possible errors
+   */
   private static ProgramInstance parseLookdown(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Lookdown lookdown = null;
 
     try {
       String data = line.replaceAll("\\s*LOOKDOWN\\s*", "").trim();
-      String args[] = data.split("[\\(\\)]");
+      String[] args = data.split("[\\(\\)]");
       String target = args[0].replaceAll(",", "").trim();
       String rawValues = args[1].trim();
       String result = args[2].replaceAll(",", "").trim();
@@ -591,6 +714,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a PWM command and its parameters.
+   * 
+   * @param line
+   *          containing the PWM command and its parameters
+   * @param lineNumber
+   *          in which the PWM command is in
+   * @return ProgramInstance containing the PWM command and possible errors
+   */
   private static ProgramInstance parsePwm(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Pwm pwm = null;
@@ -615,6 +747,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a POT command and its parameters.
+   * 
+   * @param line
+   *          containing the POT command and its parameters
+   * @param lineNumber
+   *          in which the POT command is in
+   * @return ProgramInstance containing the POT command and possible errors
+   */
   private static ProgramInstance parsePot(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Pot pot = null;
@@ -636,6 +777,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a PULSIN command and its parameters.
+   * 
+   * @param line
+   *          containing the PULSIN command and its parameters
+   * @param lineNumber
+   *          in which the PULSIN command is in
+   * @return ProgramInstance containing the PULSIN command and possible errors
+   */
   private static ProgramInstance parsePulsin(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Pulsin pulsin = null;
@@ -654,6 +804,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a PULSOUT command and its parameters.
+   * 
+   * @param line
+   *          containing the PULSOUT command and its parameters
+   * @param lineNumber
+   *          in which the PULSOUT command is in
+   * @return ProgramInstance containing the PULSOUT command and possible errors
+   */
   private static ProgramInstance parsePulsout(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Pulsout pulsout = null;
@@ -668,6 +827,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses an ASSERT command and its parameters.
+   * 
+   * @param line
+   *          containing the ASSERT command and its parameters
+   * @param lineNumber
+   *          in which the ASSERT command is in
+   * @return ProgramInstance containing the ASSERT command and possible errors
+   */
   private static ProgramInstance parseAssert(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Assert check = null;
@@ -682,6 +850,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a NAP command and its parameters.
+   * 
+   * @param line
+   *          containing the NAP command and its parameters
+   * @param lineNumber
+   *          in which the NAP command is in
+   * @return ProgramInstance containing the NAP command and possible errors
+   */
   private static ProgramInstance parseNap(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Nap nap = null;
@@ -696,6 +873,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a SLEEP command and its parameters.
+   * 
+   * @param line
+   *          containing the SLEEP command and its parameters
+   * @param lineNumber
+   *          in which the SLEEP command is in
+   * @return ProgramInstance containing the SLEEP command and possible errors
+   */
   private static ProgramInstance parseSleep(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Sleep sleep = null;
@@ -710,6 +896,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a RANDOM command and its parameters.
+   * 
+   * @param line
+   *          containing the RANDOM command and its parameters
+   * @param lineNumber
+   *          in which the RANDOM command is in
+   * @return ProgramInstance containing the RANDOM command and possible errors
+   */
   private static ProgramInstance parseRandom(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Random random = null;
@@ -723,9 +918,18 @@ public class Parser {
     return retVal;
   }
 
-  private static ProgramInstance parseEEPROM(String line, int lineNumber) {
+  /**
+   * Parses an EEPROM command and its parameters.
+   * 
+   * @param line
+   *          containing the EEPROM command and its parameters
+   * @param lineNumber
+   *          in which the EEPROM command is in
+   * @return ProgramInstance containing the EEPROM command and possible errors
+   */
+  private static ProgramInstance parseEeprom(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
-    EEPROM eeprom = null;
+    Eeprom eeprom = null;
 
     try {
       String location = "0";
@@ -735,15 +939,14 @@ public class Parser {
       if (line.matches("^[\\d\\w]*,\\s*\\(.*")) {
         location = line.substring(0, line.indexOf("(")).replaceAll(",", "").trim();
       }
-      String rest = line
-          .substring(line.indexOf("(") + 1, line.lastIndexOf(")"));
+      String rest = line.substring(line.indexOf("(") + 1, line.lastIndexOf(")"));
       String[] rawValues = rest.split(",");
       values = new long[rawValues.length];
       for (int i = 0; i < rawValues.length; i++) {
         values[i] = (long) Integer.valueOf(rawValues[i]);
       }
 
-      eeprom = new EEPROM(location, values);
+      eeprom = new Eeprom(location, values);
       retVal.setCommand(eeprom);
     } catch (Exception e) {
       retVal.addError(new SyntaxError(lineNumber));
@@ -751,6 +954,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a READ command and its parameters.
+   * 
+   * @param line
+   *          containing the READ command and its parameters
+   * @param lineNumber
+   *          in which the READ command is in
+   * @return ProgramInstance containing the READ command and possible errors
+   */
   private static ProgramInstance parseRead(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Read read = null;
@@ -768,6 +980,15 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a WRITE command and its parameters.
+   * 
+   * @param line
+   *          containing the WRITE command and its parameters
+   * @param lineNumber
+   *          in which the WRITE command is in
+   * @return ProgramInstance containing the WRITE command and possible errors
+   */
   private static ProgramInstance parseWrite(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Write write = null;
@@ -785,18 +1006,45 @@ public class Parser {
     return retVal;
   }
 
+  /**
+   * Parses a DEACTIVATEINFO command and its parameters.
+   * 
+   * @param line
+   *          containing the DEACTIVATEINFO command and its parameters
+   * @param lineNumber
+   *          in which the DEACTIVATEINFO command is in
+   * @return ProgramInstance containing the DEACTIVATEINFO command and possible errors
+   */
   private static ProgramInstance parseDeactivateInfo(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     retVal.setCommand(new DeactivateAdditionalInformation());
     return retVal;
   }
 
+  /**
+   * Parses an ACTIVATEINFO command and its parameters.
+   * 
+   * @param line
+   *          containing the ACTIVATEINFO command and its parameters
+   * @param lineNumber
+   *          in which the ACTIVATEINFO command is in
+   * @return ProgramInstance containing the ACTIVATEINFO command and possible errors
+   */
   private static ProgramInstance parseActivateInfo(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     retVal.setCommand(new ActivateAdditionalInformation());
     return retVal;
   }
 
+  /**
+   * Parses a BRANCH command and its parameters.
+   * 
+   * @param line
+   *          containing the BRANCH command and its parameters
+   * @param lineNumber
+   *          in which the BRANCH command is in
+   * @return ProgramInstance containing the BRANCH command and possible errors
+   */
   private static ProgramInstance parseBranch(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
     Branch branch = null;

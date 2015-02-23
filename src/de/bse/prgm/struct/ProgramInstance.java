@@ -1,11 +1,11 @@
 package de.bse.prgm.struct;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import de.bse.prgm.cmd.ICommand;
 import de.bse.prgm.err.IError;
 import de.bse.prgm.war.IWarning;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class ProgramInstance {
 

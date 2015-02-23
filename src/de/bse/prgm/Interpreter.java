@@ -7,6 +7,7 @@ import de.bse.vm.Machine;
 
 /**
  * Interpreter which will run the compiled program
+ * 
  * @author Elias Groll
  * @version 2.15
  */
@@ -22,9 +23,17 @@ public class Interpreter {
   private Machine machine;
 
   /**
+   * used to count the number of executed commands.
+   */
+  private int instructions = 0;
+
+  /**
    * Constructor for the interpreter.
-   * @param machine that will be used as data during the execution
-   * @param console that will be used as io-stream during the execution
+   * 
+   * @param machine
+   *          that will be used as data during the execution
+   * @param console
+   *          that will be used as io-stream during the execution
    */
   public Interpreter(Machine machine, IConsole console) {
     this.machine = machine;
@@ -34,7 +43,8 @@ public class Interpreter {
   /**
    * Run executes the program.
    */
-  public void run() {
+  public int run() {
+    instructions = 0;
     try {
       executeCommands();
       if (machine.getSettings().getPrintInternComposition()) {
@@ -44,38 +54,36 @@ public class Interpreter {
       e.printStackTrace();
       console.printLn("[Warn]Unexpected end of exececution");
     }
+    return instructions;
   }
 
   private void executeCommands() {
     int printedWarnings = 0;
-    while (machine.getExecutionIndex() < machine.getProgram().getCommands()
-        .size()) {
+    while (machine.getExecutionIndex() < machine.getProgram().getCommands().size()) {
       if (!machine.getSettings().getIngoreWarnings()
           && printedWarnings != machine.getProgram().getWarnings().size()) {
-        for (int i = printedWarnings; i < machine.getProgram().getWarnings()
-            .size(); i++) {
+        for (int i = printedWarnings; i < machine.getProgram().getWarnings().size(); i++) {
           printedWarnings = machine.getProgram().getWarnings().size();
-          console.printLn(machine.getProgram().getWarnings().get(i)
-              .warningMsg());
+          console.printLn(machine.getProgram().getWarnings().get(i).warningMsg());
         }
       }
       if (!noErrors()) {
         break;
       }
-      ICommand cmd = machine.getProgram().getCommands()
-          .get(machine.getExecutionIndex());
+      ICommand cmd = machine.getProgram().getCommands().get(machine.getExecutionIndex());
       if (machine.getSettings().getPrintInfo()) {
         console.printLn(cmd.infoMsg());
       }
-      if (machine.getSettings().getEmulate4MHZ()) {
+      if (machine.getSettings().getEmulate4Mhz()) {
         try {
           Thread.sleep(20);
         } catch (InterruptedException e) {
-          //do nothing
+          // do nothing
         }
       }
       cmd.execute(machine, console);
       machine.setExecutionIndex(machine.getExecutionIndex() + 1);
+      instructions++;
     }
     if (!noErrors()) { // if got and error at the last command
       for (IError err : machine.getProgram().getErrors()) {
@@ -86,6 +94,7 @@ public class Interpreter {
 
   /**
    * Determines wether the program executed has created any errors or not
+   * 
    * @return true/false depending on if the program has created any errors.
    */
   private boolean noErrors() {

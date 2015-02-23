@@ -9,6 +9,12 @@ public abstract class Relation implements IVariable {
   protected IVariable rightSide;
   protected IVariable retVal = new Bit(0);
 
+  /**
+   * Compares the left side of the Relation to the right side of the relation.
+   * @param leftSide of the relation
+   * @param rightSide of the relation
+   * @return the result
+   */
   public IVariable compare(IVariable leftSide, IVariable rightSide) {
     init(this.leftSide, this.rightSide);
     exec();

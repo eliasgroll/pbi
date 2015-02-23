@@ -5,6 +5,12 @@ import de.bse.run.app.IConsole;
 import de.bse.vm.Machine;
 import de.bse.vm.var.IVariable;
 
+/**
+ * Used to minimize code duplicates in commands, which do something with a location and a variable.
+ * 
+ * @author Elias Groll
+ * @version 2.15
+ */
 public abstract class AccessCommand extends HotspotCompiledCommand {
 
   public AccessCommand(String locationString, String varString) {
