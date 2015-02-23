@@ -4,8 +4,7 @@ The πBASIC Interpreter (written by Elias Groll, Jonas Reichmann)
 ================
 
 This is a java program that interprets the Basic Stamp 1 Basic language PBasic (®).
-Run it on linux/mac with pbi.sh or on windows with pbi.bat.
-(You can also run it on every system with java -jar pbi.jar)
+Run it on linux/mac with pbi.sh or on windows with pbi.bat (You can also run it on every system with java -jar pbi.jar).
 Use the filename as last argument.
 Other flags are: `-noinfo` (removes the output of additional information about the actual command),
                  `-nowarn` (removes the output of warnings), and
