@@ -13,8 +13,9 @@ Use the filename as last argument.
 
 Additional flags on the command line:
 * `-noinfo` (removes the output of additional information about the actual command),
-* `-nowarn` (removes the output of warnings), and
-* `-fast`   (does not slow down the execution to the level of bs1).
+* `-nowarn` (removes the output of warnings),
+* `-fast`   (does not slow down the execution to the level of bs1) and
+* `-pic`    (print the result of the parser).
 
 Additional elements of the language: `ACTIVATEINFO` (a command that activates the output of additional information at runtime), `DEACTIVATEINFO` (a command that deactivates the output of additional information at runtime), `DEBUG EEPROM` (a debug argument that outputs the composition of the EEPROM at runtime), `SYMBOL new = NEW 16` (a command that adds a new variable of 16 bits to the system), `SYSCLOCK` (A variable which returns System.currentTimeMillis() - the system-time), `BREAKPOINT` (a command that loops the evaluation of the user-input as a single command) and `ASSERT` (a command that creates an error if the following expression is false).
 
