@@ -21,7 +21,8 @@ Additional elements of the language: `ACTIVATEINFO` (a command that activates th
 
 How to install the IDE
 --------------
-1. Download the latest pbi-win32.zip (Windows - coming soon), pbi-linux.tar.gz2 (Linux) or pbi-mac.zip (Mac - coming soon) and unzip it to a directory of your choice.
+1. Download the latest `bi-win32.zip` (Windows - coming soon), `pbi-linux.tar.gz2` (Linux) 
+   or `pbi-mac.zip` (Mac - coming soon) and unzip it to a directory of your choice.
 2. Run it on every system with double-clicking the executable (pbi).
 
 (written by Elias Groll, Jonas Reichmann)
