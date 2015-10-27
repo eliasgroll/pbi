@@ -4,19 +4,18 @@ import java.util.Scanner;
 
 public class Console implements IConsole {
 
-  @Override
   public void printLn(String line) {
     System.out.println(line);
   }
 
   @SuppressWarnings("resource")
-  @Override
+  
   public String readLn() {
     Scanner scanner = new Scanner(System.in);
     return scanner.nextLine();
   }
 
-  @Override
+  
   public void clearConsole() {
     try {
       final String os = System.getProperty("os.name");
@@ -27,11 +26,11 @@ public class Console implements IConsole {
         Runtime.getRuntime().exec("clear");
       }
     } catch (Exception e) {
-      //do nothing
+    	//do nothing
     }
   }
 
-  @Override
+  
   public void print(String line) {
     System.out.print(line);
   }

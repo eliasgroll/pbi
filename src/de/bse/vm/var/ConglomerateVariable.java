@@ -6,7 +6,7 @@ import de.bse.vm.var.format.Formatter;
  * A variable which consists of individually accessible bits.
  * 
  * @author Elias Groll
- * @version 2.15
+ * @version 10.15
  */
 public class ConglomerateVariable implements IVariable {
   /**
@@ -44,7 +44,7 @@ public class ConglomerateVariable implements IVariable {
     return retVal;
   }
 
-  @Override
+  
   public String toString() {
     String value = Formatter.convertToHexString(getValue());
     return value;
@@ -65,7 +65,7 @@ public class ConglomerateVariable implements IVariable {
     }
   }
 
-  @Override
+  
   public long getValue() {
     long retVal = 0;
     long comp = 1;
@@ -80,7 +80,7 @@ public class ConglomerateVariable implements IVariable {
 
   }
 
-  @Override
+  
   public void setValue(long value) {
     long val = value;
     while (val < 0) {

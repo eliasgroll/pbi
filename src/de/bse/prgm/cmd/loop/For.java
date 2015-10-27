@@ -11,7 +11,7 @@ import de.bse.vm.var.IVariable;
  * For command which loops through the following code block until it finds a next
  * whilst increasing the iterator by stepSize until it hits is goal.
  * @author Elias Groll, Jonas Reichmann
- * @version 2.15
+ * @version 10.15
  */
 public class For implements ICommand {
 
@@ -37,13 +37,13 @@ public class For implements ICommand {
     this.stepSize = stepSize;
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     initVars(machine, console);
     initNext(machine, console);
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Iterating from "
         + String.valueOf(fromInit.replace(".*=\\s*", "").trim()) + " to "
@@ -59,9 +59,8 @@ public class For implements ICommand {
     }
     try {
       setFrom(machine.parseIVariable(alloc[0].trim()));
-      long initialisingValue = Long.parseLong(alloc[1].trim());
-
-      getFrom().setValue(initialisingValue);
+      IVariable init = machine.parseIVariable(alloc[1].trim());
+      getFrom().setValue(init.getValue());
       to = machine.parseIVariable(goal);
       if (stepSize != null) {
         if (stepSize.startsWith("-")) {
@@ -79,6 +78,9 @@ public class For implements ICommand {
       machine.getProgram()
           .addError(new InvalidAllocationRuntimeError(fromInit));
 
+    } catch (ArrayIndexOutOfBoundsException e){
+    	 machine.getProgram()
+         .addError(new InvalidAllocationRuntimeError(fromInit));
     }
   }
 
@@ -101,7 +103,7 @@ public class For implements ICommand {
     }
   }
 
-  @Override
+  
   public String toString() {
     return "FOR";
   }

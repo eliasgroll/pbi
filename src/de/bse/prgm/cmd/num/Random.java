@@ -12,7 +12,7 @@ import de.bse.vm.var.IVariable;
  * in the variable.
  * 
  * @author Elias Groll
- * @version 2.15
+ * @version 10.15
  */
 public class Random extends HotspotCompiledCommand {
 
@@ -25,28 +25,34 @@ public class Random extends HotspotCompiledCommand {
   IVariable var;
   java.util.Random random;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     if (var != null) {
       try {
         random.setSeed(var.getValue());
-        var.setValue((short) random.nextInt());
+        int rand = Math.abs(random.nextInt())%65535 ;
+        var.setValue(rand);
       } catch (ParserException e) {
         machine.getProgram().addError(new CannotChangeAConstantValueRuntimeError(varString));
       }
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Generate a pseudo-random number on " + varString;
   }
 
-  @Override
+  
   public void init(Machine machine) {
     var = machine.parseIVariable(varString);
     random = new java.util.Random();
   }
+  
+  @Override
+	public String toString() {
+		return "RANDOM";
+	}
 
 }

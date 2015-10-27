@@ -33,7 +33,7 @@ import de.bse.prgm.cmd.loop.Next;
 import de.bse.prgm.cmd.num.Lookdown;
 import de.bse.prgm.cmd.num.Lookup;
 import de.bse.prgm.cmd.num.Random;
-import de.bse.prgm.cmd.storage.Eeprom;
+import de.bse.prgm.cmd.storage.EEPROM;
 import de.bse.prgm.cmd.storage.Read;
 import de.bse.prgm.cmd.storage.Write;
 import de.bse.prgm.cmd.time.Pause;
@@ -41,6 +41,7 @@ import de.bse.prgm.err.HardwareError;
 import de.bse.prgm.err.IError;
 import de.bse.prgm.err.InvalidAllocationError;
 import de.bse.prgm.err.SyntaxError;
+import de.bse.prgm.err.VariableNotReferenceableError;
 import de.bse.prgm.err.parsing.TooManySubroutineCallsError;
 import de.bse.prgm.struct.ProgramInstance;
 import de.bse.prgm.war.LabelWarning;
@@ -50,7 +51,7 @@ import de.bse.util.ParserException;
  * Parser which parses each line and creates a respective ProgramInstance
  * 
  * @author Jonas Reichmann
- * @version 2.15
+ * @version 10.15
  */
 public class Parser {
 
@@ -150,7 +151,7 @@ public class Parser {
 
     ProgramInstance retVal = new ProgramInstance();
     retVal.addError(new IError() {
-      @Override
+      
       public String errorMsg() {
         return "[Error, internal]parse failed";
       }
@@ -612,7 +613,9 @@ public class Parser {
 
       if (line.contains("NEW")) {
         int size = Integer.valueOf(line.replaceAll(".*=\\s*NEW\\s*", "").trim());
-
+        if(size > 16){
+        	retVal.addError(new VariableNotReferenceableError(lineNumber, size));
+        }
         symbol = new Symbol(name, size);
       } else {
         String referencedVariable = line.replaceAll(".*=\\s*", "").trim();
@@ -929,7 +932,7 @@ public class Parser {
    */
   private static ProgramInstance parseEeprom(String line, int lineNumber) {
     ProgramInstance retVal = new ProgramInstance();
-    Eeprom eeprom = null;
+    EEPROM eeprom = null;
 
     try {
       String location = "0";
@@ -946,7 +949,7 @@ public class Parser {
         values[i] = (long) Integer.valueOf(rawValues[i]);
       }
 
-      eeprom = new Eeprom(location, values);
+      eeprom = new EEPROM(location, values);
       retVal.setCommand(eeprom);
     } catch (Exception e) {
       retVal.addError(new SyntaxError(lineNumber));

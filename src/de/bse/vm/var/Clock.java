@@ -7,16 +7,16 @@ import de.bse.util.ParserException;
  * speed-test.
  * 
  * @author Elias Groll
- * @version 2.15
+ * @version 10.15
  */
 public class Clock implements IVariable {
 
-  @Override
+  
   public long getValue() {
-    return System.currentTimeMillis();
+    return  (System.currentTimeMillis()/1000) % 65536;
   }
 
-  @Override
+  
   public void setValue(long value) {
     throw new ParserException("Cannot change constant value");
   }

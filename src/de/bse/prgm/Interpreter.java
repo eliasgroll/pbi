@@ -9,7 +9,7 @@ import de.bse.vm.Machine;
  * Interpreter which will run the compiled program
  * 
  * @author Elias Groll
- * @version 2.15
+ * @version 10.15
  */
 public class Interpreter {
 
@@ -52,7 +52,7 @@ public class Interpreter {
       }
     } catch (Exception e) {
       e.printStackTrace();
-      console.printLn("[Warn]Unexpected end of exececution");
+      console.printLn("[Warn]Unexpected end of exececution - please report to https://github.com/EliasGroll/pbi/issues");
     }
     return instructions;
   }
@@ -93,12 +93,20 @@ public class Interpreter {
   }
 
   /**
-   * Determines wether the program executed has created any errors or not
+   * Determines whether the program executed has created any errors or not
    * 
    * @return true/false depending on if the program has created any errors.
    */
   private boolean noErrors() {
     return machine.getProgram().getErrors().isEmpty();
   }
-
+/**
+ * Getter for machine.
+ * 
+ * @return machine
+ */
+  public Machine getMachine(){
+	  return machine;
+  }
+  
 }

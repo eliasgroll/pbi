@@ -1,20 +1,18 @@
 package de.bse.prgm.err;
 
-import de.bse.prgm.err.IError;
 
-public class InvalidAllocationError implements IError {
+public class InvalidAllocationError  extends LineSpecificError  {
 
   public InvalidAllocationError(String allocation, int lineNumber) {
-    this.allocation = allocation;
-    this.lineNumber = lineNumber;
+   super(lineNumber);
+	  this.allocation = allocation;
   }
 
-  int lineNumber;
   String allocation;
 
-  @Override
+  
   public String errorMsg() {
-    return "[Error, line " + lineNumber + "]The allocation \"" + allocation
+    return prefix() + "The allocation \"" + allocation
         + "\" is not executable";
   }
 

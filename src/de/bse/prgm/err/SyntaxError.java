@@ -7,9 +7,9 @@ public class SyntaxError extends LineSpecificError {
 
   }
 
-  @Override
+  
   public String errorMsg() {
-    return "[Error, line " + lineNumber + "]Incorrect syntax";
+    return prefix() + "Incorrect syntax";
   }
 
 }

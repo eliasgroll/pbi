@@ -16,7 +16,7 @@ import java.util.Scanner;
  * parser.
  * 
  * @author Elias Groll
- * @version 2.15
+ * @version 10.15
  */
 public class Lexer {
 
@@ -30,7 +30,7 @@ public class Lexer {
   /**
    * All tokens the Lexer can understand/verify.
    */
-  private static final String[] knownCommands = new String[] { "HIGH", "LOW",
+  public static final String[] KNOWN_COMMANDS = new String[] { "HIGH", "LOW",
       "INSTRUCT", "OUTPUT", "PAUSE", "GOTO", "IF", "END", "SOUND", "GOSUB",
       "RETURN", "FOR", "NEXT", "DEBUG", "BREAKPOINT", "SYMBOL", "LOOKUP",
       "LOOKDOWN", "SEROUT", "SERIN", "PWM", "POT", "PULSIN", "PULSOUT", "LET",
@@ -48,7 +48,7 @@ public class Lexer {
   private static boolean isAKnownCommand(String line) {
     boolean retVal = false;
 
-    for (String cmd : knownCommands) {
+    for (String cmd : KNOWN_COMMANDS) {
       if ((line.startsWith(cmd) ^ line.endsWith(":")) ^ line.contains("=")) {
         // excluding or -> a line cannot be a label and a command or allocation
         retVal = true;
@@ -129,7 +129,7 @@ public class Lexer {
     } catch (Exception e) {
       retVal.addError(new IError() {
 
-        @Override
+        
         public String errorMsg() {
           return "[Error, internal]Parser error";
         }
@@ -147,7 +147,7 @@ public class Lexer {
    * @return array of strings containing all commands known to the Lexer
    */
   public static String[] getKnownCommands() {
-    return knownCommands;
+    return KNOWN_COMMANDS;
   }
 
   /**

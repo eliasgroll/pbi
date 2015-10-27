@@ -1,16 +1,17 @@
 package de.bse.prgm.struct;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import de.bse.prgm.cmd.ICommand;
 import de.bse.prgm.err.IError;
 import de.bse.prgm.war.IWarning;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Program {
-  private List<IError> errors = new ArrayList<IError>(); // only for a sorted output
+  private List<IError> errors = new LinkedList<IError>(); // only to have a sorted output
   private List<ICommand> commands = new ArrayList<ICommand>();
-  private List<IWarning> warnings = new ArrayList<IWarning>();
+  private List<IWarning> warnings = new LinkedList<IWarning>();
 
   public List<IError> getErrors() {
     return errors;
@@ -55,7 +56,7 @@ public class Program {
     if (instance.getCommand() == null) {
       warnings.add(new IWarning() {
 
-        @Override
+        
         public String warningMsg() {
           return "[Warning]A parsed instance didn't return a initialized command";
         }
@@ -64,7 +65,7 @@ public class Program {
     addCommand(instance.getCommand());
   }
 
-  @Override
+  
   public String toString() {
     String retVal = "commands: " + commands.size() + ";" + " warnings: "
         + warnings.size() + ";" + " errors: " + (errors.size()) + "\n\n";

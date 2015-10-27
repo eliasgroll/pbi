@@ -73,7 +73,7 @@ public class ConsoleMain {
       Program program = Lexer.createProgramFromString(code);
       Settings settings = new Settings(printInfo, emulate4Mhz, printInternComposition,
           ignoreWarnings);
-      Machine machine = new Machine(program, settings);
+      Machine machine = new Machine(program, settings,null);
       Interpreter interpreter = new Interpreter(machine, console);
       String input = null;
       int execs;
