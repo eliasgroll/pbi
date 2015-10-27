@@ -51,7 +51,7 @@ import de.bse.util.ParserException;
  * Parser which parses each line and creates a respective ProgramInstance
  * 
  * @author Jonas Reichmann
- * @version 10.15
+ * @version 2.15
  */
 public class Parser {
 
@@ -143,7 +143,7 @@ public class Parser {
       return parseRandom(line, lineNumber);
     } else if (line.startsWith("ACTIVATEINFO")) {
       return parseActivateInfo(line, lineNumber);
-    } else if (line.startsWith("DISACTIVATEINFO")) {
+    } else if (line.startsWith("DEACTIVATEINFO")) {
       return parseDeactivateInfo(line, lineNumber);
     } else if (line.startsWith("REVERSE")) {
       return parseReverse(line, lineNumber);

@@ -17,7 +17,7 @@ public class Read extends AccessCommand {
     super(locationString, varString);
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     initVars(machine, console);
     try {
@@ -30,7 +30,7 @@ public class Read extends AccessCommand {
 
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Read from \"" + locationString + "\"  and store it at \"" + varString
         + "\" in EEPROM";

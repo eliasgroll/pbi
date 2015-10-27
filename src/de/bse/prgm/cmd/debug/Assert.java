@@ -34,7 +34,7 @@ public class Assert extends HotspotCompiledCommand {
   private IVariable expression;
   private final int lineNumber;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     if (expression == null || expression.getValue() == 0) {
@@ -43,12 +43,12 @@ public class Assert extends HotspotCompiledCommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Assert \"" + expressionString + "\"";
   }
 
-  @Override
+  
   protected void init(Machine machine) {
     RelationParser parser = new RelationParser();
     try {

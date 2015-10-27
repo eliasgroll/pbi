@@ -10,7 +10,7 @@ public class Max extends ArithmeticalOperator {
   /**
    * Executes the calculation and stores the result in retVal.
    */
-  @Override
+  
   protected void exec() {
     short left = (short) leftSide.getValue();
     short right = (short) rightSide.getValue();
@@ -26,7 +26,7 @@ public class Max extends ArithmeticalOperator {
    * Returns a new Max instance.
    * @return a new Max instance
    */
-  @Override
+  
   public ArithmeticalOperator create() {
     return new Max();
   }

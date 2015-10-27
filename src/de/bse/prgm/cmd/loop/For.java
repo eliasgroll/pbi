@@ -11,7 +11,7 @@ import de.bse.vm.var.IVariable;
  * For command which loops through the following code block until it finds a next
  * whilst increasing the iterator by stepSize until it hits is goal.
  * @author Elias Groll, Jonas Reichmann
- * @version 10.15
+ * @version 2.15
  */
 public class For implements ICommand {
 

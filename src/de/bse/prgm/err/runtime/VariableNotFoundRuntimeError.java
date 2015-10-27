@@ -11,7 +11,7 @@ public class VariableNotFoundRuntimeError implements IError {
 
   String var;
 
-  @Override
+  
   public String errorMsg() {
     return "[Error, runtime]Unknown variable \"" + var + "\"";
   }

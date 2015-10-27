@@ -14,7 +14,7 @@ public class Nap extends Pause {
     super(time, 50);
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Paused the execution for ca." + (time * 50) + " milliseconds";
   }

@@ -7,7 +7,7 @@ public class LabelDoesNotExistRuntimeError extends AmbigousLabelRuntimeError {
 
   }
 
-  @Override
+  
   public String errorMsg() {
     return "[Error, runtime]Couldn't jump to missing label \"" + name + "\"";
   }

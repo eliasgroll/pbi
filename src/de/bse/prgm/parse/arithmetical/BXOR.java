@@ -10,7 +10,7 @@ public class BXOR extends ArithmeticalOperator {
   /**
    * Executes the calculation (^) and stores the result in retVal.
    */
-  @Override
+  
   protected void exec() {
     retVal.setValue(leftSide.getValue() ^  rightSide.getValue());
   }
@@ -19,7 +19,7 @@ public class BXOR extends ArithmeticalOperator {
    * Returns a new BXOR instance.
    * @return a new BXOR instance
    */
-  @Override
+  
   public ArithmeticalOperator create() {
     return new BXOR();
   }

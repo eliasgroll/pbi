@@ -27,7 +27,7 @@ public abstract class AccessCommand extends HotspotCompiledCommand {
     super.execute(machine, console);
   }
 
-  @Override
+  
   public void init(Machine machine) {
     var = machine.parseIVariable(varString);
     location = machine.parseIVariable(locationString);

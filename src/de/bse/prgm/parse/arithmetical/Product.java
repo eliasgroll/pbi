@@ -10,7 +10,7 @@ public class Product extends ArithmeticalOperator {
   /**
    * Executes the calculation and stores the result in retVal.
    */
-  @Override
+  
   protected void exec() {
     retVal.setValue(leftSide.getValue() *  rightSide.getValue());
   }
@@ -19,7 +19,7 @@ public class Product extends ArithmeticalOperator {
    * Returns a new Product instance.
    * @return a new Product instance
    */
-  @Override
+  
   public ArithmeticalOperator create() {
     return new Product();
   }

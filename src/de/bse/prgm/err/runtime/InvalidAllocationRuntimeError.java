@@ -10,7 +10,7 @@ public class InvalidAllocationRuntimeError implements IError {
 
   String allocation;
 
-  @Override
+  
   public String errorMsg() {
     return "[Error, runtime]The allocation \"" + allocation
         + "\" is not executable";

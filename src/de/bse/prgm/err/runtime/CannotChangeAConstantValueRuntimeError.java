@@ -10,7 +10,7 @@ public class CannotChangeAConstantValueRuntimeError implements IError {
 
   String var;
 
-  @Override
+  
   public String errorMsg() {
     return "[Error, runtime]" + var + " is a constant and can not be changed";
   }

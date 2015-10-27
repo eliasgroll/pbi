@@ -34,7 +34,7 @@ public class Branch extends HotspotCompiledCommand {
   private Goto[] branch;
   private IVariable var;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     if (var != null && branch != null) {
@@ -44,7 +44,7 @@ public class Branch extends HotspotCompiledCommand {
         // we'd normally throw an error but the bs1 doesn't
         machine.getProgram().addWarning(new IWarning() {
 
-          @Override
+          
           public String warningMsg() {
             return "[Warn]Branch-variable does not match a label";
           }
@@ -53,17 +53,17 @@ public class Branch extends HotspotCompiledCommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Switch " + varString + " to match " + Arrays.toString(labels);
   }
 
-  @Override
+  
   public String toString() {
     return "BRANCH";
   }
 
-  @Override
+  
   protected void init(Machine machine) {
     var = machine.parseIVariable(varString);
     branch = new Goto[labels.length];

@@ -10,7 +10,7 @@ public class BNAND extends ArithmeticalOperator {
   /**
    * Executes the calculation (&/) and stores the result in retVal.
    */
-  @Override
+  
   protected void exec() {
     retVal.setValue(leftSide.getValue() & ~rightSide.getValue());
   }
@@ -20,7 +20,7 @@ public class BNAND extends ArithmeticalOperator {
    * Returns a new BNAND instance.
    * @return new BNAND instance
    */
-  @Override
+  
   public ArithmeticalOperator create() {
     return new BNAND();
   }

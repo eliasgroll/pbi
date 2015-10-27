@@ -15,12 +15,12 @@ public class Constant extends DynamicVariable {
     super.setValue(value);
   }
 
-  @Override
+  
   public long getValue() {
     return super.getValue();
   }
 
-  @Override
+  
   public void setValue(long value) {
     throw new ParserException("Cannot change constant value");
   }

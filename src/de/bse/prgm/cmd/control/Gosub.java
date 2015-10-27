@@ -39,7 +39,7 @@ public class Gosub implements ICommand {
     id = numberOfGosubs - 1;
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     Bit[] gosubs = ((ConglomerateVariable) machine.parseIVariable("W6"))
         .getBits();
@@ -47,12 +47,12 @@ public class Gosub implements ICommand {
     jmp.execute(machine, console);
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Call subroutine \"" + reference + "\"";
   }
 
-  @Override
+  
   public String toString() {
     return "GOSUB";
   }

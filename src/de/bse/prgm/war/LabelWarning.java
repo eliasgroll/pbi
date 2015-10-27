@@ -10,7 +10,7 @@ public class LabelWarning implements IWarning {
     this.name = name;
   }
 
-  @Override
+  
   public String warningMsg() {
     return "[Warn]There is a label called \"" + name + "\" in line "
         + position;

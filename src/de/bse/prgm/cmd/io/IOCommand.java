@@ -18,12 +18,12 @@ public abstract class IOCommand extends HotspotCompiledCommand {
   protected IVariable dir;
   private IVariable check;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
   }
 
-  @Override
+  
   protected void init(Machine machine) {
     check = machine.parseIVariable(num);
     pin = machine.parseIVariable("PIN" + check.getValue());

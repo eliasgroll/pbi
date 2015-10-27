@@ -7,7 +7,7 @@ import de.bse.util.ParserException;
  * speed-test.
  * 
  * @author Elias Groll
- * @version 10.15
+ * @version 2.15
  */
 public class Clock implements IVariable {
 

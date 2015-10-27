@@ -16,7 +16,7 @@ import java.util.Scanner;
  * parser.
  * 
  * @author Elias Groll
- * @version 10.15
+ * @version 2.15
  */
 public class Lexer {
 

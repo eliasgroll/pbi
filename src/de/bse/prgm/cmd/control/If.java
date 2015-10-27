@@ -12,7 +12,7 @@ import de.bse.vm.var.IVariable;
  * Evaluates an expression and goes to a label if the expression is true.
  * 
  * @author Elias Groll
- * @version 10.15
+ * @version 2.15
  */
 public class If extends HotspotCompiledCommand {
 	String expression;

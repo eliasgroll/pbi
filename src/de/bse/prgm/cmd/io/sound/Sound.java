@@ -32,7 +32,7 @@ public class Sound extends IOCommand {
   private int duration;
   private int frequency;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     initVars(machine);
@@ -45,7 +45,7 @@ public class Sound extends IOCommand {
           Thread.sleep(duration * 12);
         } catch (InterruptedException e1) {
           machine.getProgram().addWarning(new IWarning() {
-            @Override
+            
             public String warningMsg() {
               return "[Warn]The audio output could have been interrupted";
             }
@@ -61,13 +61,13 @@ public class Sound extends IOCommand {
     this.frequency = (int) (1 / (0.000095 + ((127 - note) * 0.000083)));
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Sound(" + frequency + "hz) on P" + num + " for " + duration
         * 12 + " milliseconds";
   }
 
-  @Override
+  
   public String toString() {
     return "SOUND";
   }

@@ -29,7 +29,7 @@ public class Instruct implements ICommand {
 
   private final int lineNumber;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     String line;
     do {
@@ -44,7 +44,7 @@ public class Instruct implements ICommand {
         if (command instanceof Label) {
           instance.addWarning(new IWarning() {
 
-            @Override
+            
             public String warningMsg() {
               return "[Warn]You cannot goto a dynamically created label";
             }
@@ -66,12 +66,12 @@ public class Instruct implements ICommand {
     } while (!line.isEmpty());
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Input a valid command to be evaluated and executed seperately";
   }
 
-  @Override
+  
   public String toString() {
     return "BREAKPOINT";
   }

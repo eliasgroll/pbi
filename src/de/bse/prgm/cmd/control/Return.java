@@ -8,7 +8,7 @@ import de.bse.vm.var.ConglomerateVariable;
 
 public class Return implements ICommand {
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     Bit[] gosubs = ((ConglomerateVariable) machine.parseIVariable("W6"))
         .getBits();
@@ -28,12 +28,12 @@ public class Return implements ICommand {
     machine.setExecutionIndex(jumpTo);
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Return to last executed gosub or to end if there is none";
   }
 
-  @Override
+  
   public String toString() {
     return "RETURN";
   }

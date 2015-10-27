@@ -6,12 +6,12 @@ import de.bse.vm.Machine;
 
 public class Pulsout implements ICommand {
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     // pulsout can not be supported by pbi
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Placeholder for \"PULSOUT\"";
   }

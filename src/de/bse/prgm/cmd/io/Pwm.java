@@ -34,13 +34,13 @@ public class Pwm implements ICommand {
   private final Pause pause;
   private final Input input;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     pause.execute(machine, console);
     input.execute(machine, console);
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Simulate PWM on PIN" + pin + " with duty " + duty
         + " and duration " + duration;

@@ -9,7 +9,7 @@ public class Reverse extends IOCommand {
     super(num);
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     if (dir != null) {
@@ -17,7 +17,7 @@ public class Reverse extends IOCommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Reversed direction DIR" + num;
   }

@@ -12,7 +12,7 @@ import de.bse.vm.var.IVariable;
  * in the variable.
  * 
  * @author Elias Groll
- * @version 10.15
+ * @version 2.15
  */
 public class Random extends HotspotCompiledCommand {
 

@@ -14,7 +14,7 @@ public class Sleep extends Pause {
     super(time, 1000);
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Paused the execution for ca." + (time * 1000)
         + " milliseconds";

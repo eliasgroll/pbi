@@ -27,7 +27,7 @@ public class Allocation extends HotspotCompiledCommand {
   private IVariable calc;
   private ArithmeticalParser parser = new ArithmeticalParser();
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine,console);
     if (var != null && calc != null) {
@@ -45,12 +45,12 @@ public class Allocation extends HotspotCompiledCommand {
     return varString;
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Allocating \"" + calcString + "\" to \"" + varString + "\"";
   }
 
-  @Override
+  
   public String toString() {
     return "ALLOCATION";
   }
@@ -59,7 +59,7 @@ public class Allocation extends HotspotCompiledCommand {
     return var;
   }
 
-  @Override
+  
   protected void init(Machine machine) {
     try {
       var = machine.parseIVariable(varString);

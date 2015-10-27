@@ -9,7 +9,7 @@ public class Toggle extends IOCommand {
     super(num);
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     if (pin != null && dir != null) {
@@ -18,13 +18,13 @@ public class Toggle extends IOCommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]PIN" + num + " changed it's state and DIR" + num
         + " is now set to 1(OUTPUT)";
   }
 
-  @Override
+  
   public String toString() {
     return "TOGGLE";
   }

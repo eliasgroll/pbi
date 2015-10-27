@@ -11,7 +11,7 @@ public class ConstantReferenceRuntimeError implements IError {
 
   private String var;
 
-  @Override
+  
   public String errorMsg() {
     return "[Error, runtime]Ambigous name of reference \"" + var + "\"";
   }

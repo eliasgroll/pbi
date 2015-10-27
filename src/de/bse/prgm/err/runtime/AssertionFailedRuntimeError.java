@@ -11,7 +11,7 @@ public class AssertionFailedRuntimeError extends LineSpecificError {
 
   String expression;
 
-  @Override
+  
   public String errorMsg() {
     return "[Error, runime]Assertion \"" + expression + "\" failed in line "
         + lineNumber;

@@ -10,7 +10,7 @@ public class Next implements ICommand {
   private For head;
   private int jumpTo;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     if (head == null) {
       machine.getProgram().addError(new NoLoopHeadRuntimeError());
@@ -31,13 +31,13 @@ public class Next implements ICommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Resume execution after this NEXT at Line "
         + String.valueOf(jumpTo);
   }
 
-  @Override
+  
   public String toString() {
     return "NEXT";
   }

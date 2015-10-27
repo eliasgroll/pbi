@@ -29,7 +29,7 @@ public class Symbol implements ICommand {
   private String referencedObject;
   private int newObject = 0;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     IVariable referenced;
     if (referencedObject == null) { // referencedObject is the String
@@ -44,12 +44,12 @@ public class Symbol implements ICommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Referencing " + referencedObject + " with " + name;
   }
 
-  @Override
+  
   public String toString() {
     return "SYMBOL";
   }

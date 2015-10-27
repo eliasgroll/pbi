@@ -16,7 +16,7 @@ public class Write extends AccessCommand {
     super(locationString, varString);
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     initVars(machine, console);
     try {
@@ -29,7 +29,7 @@ public class Write extends AccessCommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Write at \"" + locationString + "\"  and store \"" + varString + "\" in EEPROM";
   }

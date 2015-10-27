@@ -28,12 +28,12 @@ public abstract class Relation implements IVariable {
 
   protected abstract void exec();
 
-  @Override
+  
   public long getValue() {
     return compare(leftSide, rightSide).getValue();
   }
 
-  @Override
+  
   public void setValue(long value) {
     throw new RuntimeException("Cannot change a constant");
   }

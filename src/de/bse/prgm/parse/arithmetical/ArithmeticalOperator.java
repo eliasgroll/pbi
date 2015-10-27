@@ -56,7 +56,7 @@ public abstract class ArithmeticalOperator implements IVariable {
    * [executes calculate(leftSide, rightSide).getValue();]
    * @return value of the calculation
    */
-  @Override
+  
   public long getValue() {
     return calculate(leftSide, rightSide).getValue();
   }
@@ -65,7 +65,7 @@ public abstract class ArithmeticalOperator implements IVariable {
    * Attemps to set a value, but since ArithmeticalOperator is a
    * constant it will always throw a ParserException.
    */
-  @Override
+  
   public void setValue(long value) {
     throw new ParserException("Cannot change a constant");
   }

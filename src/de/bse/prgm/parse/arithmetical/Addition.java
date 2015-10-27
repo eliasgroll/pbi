@@ -10,7 +10,7 @@ public class Addition extends ArithmeticalOperator {
   /**
    * Executes the calculation (+) and stores the value in retVal.
    */
-  @Override
+  
   protected void exec() {
     retVal.setValue(leftSide.getValue() +  rightSide.getValue());
   }
@@ -19,7 +19,7 @@ public class Addition extends ArithmeticalOperator {
    * Returns a new Addition instance.
    * @return new Addition instance
    */
-  @Override
+  
   public ArithmeticalOperator create() {
     return new Addition();
   }

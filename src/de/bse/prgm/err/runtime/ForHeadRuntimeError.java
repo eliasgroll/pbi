@@ -10,7 +10,7 @@ public class ForHeadRuntimeError implements IError {
     this.data = data;
   }
 
-  @Override
+  
   public String errorMsg() {
     if (data.equals("")) {
       return "[Error, runtime]Invalid Head of FOR-Command, Vars not found:"

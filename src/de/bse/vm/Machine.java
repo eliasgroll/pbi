@@ -21,7 +21,7 @@ import java.util.Map;
  * The vm of the emulated microcontroller. Manages all variables.
  * 
  * @author Elias Groll, Jonas Reichmann
- * @version 10.15
+ * @version 2.15
  */
 public class Machine {
 	private final Program program;

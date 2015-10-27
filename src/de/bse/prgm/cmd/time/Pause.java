@@ -28,7 +28,7 @@ public class Pause extends HotspotCompiledCommand {
   private final String timeString;
   private final long multiplier;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     time = timeVar.getValue() * multiplier;
@@ -40,17 +40,17 @@ public class Pause extends HotspotCompiledCommand {
 
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Paused the execution for " + time + " milliseconds";
   }
 
-  @Override
+  
   public String toString() {
     return "PAUSE";
   }
 
-  @Override
+  
   protected void init(Machine machine) {
     timeVar = machine.parseIVariable(timeString);
   }

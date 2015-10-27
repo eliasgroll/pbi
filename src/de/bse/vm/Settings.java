@@ -31,7 +31,7 @@ public class Settings {
   }
 
   public void deactivateInfo() {
-    this.printInfo = true;
+    this.printInfo = false;
   }
 
   public boolean getPrintInfo() {

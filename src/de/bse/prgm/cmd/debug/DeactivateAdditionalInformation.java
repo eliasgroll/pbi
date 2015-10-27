@@ -13,13 +13,13 @@ import de.bse.vm.Machine;
  */
 public class DeactivateAdditionalInformation implements ICommand {
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     machine.getSettings().deactivateInfo();
     // no if because alloc is faster than check
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Deactivating additional information";
   }

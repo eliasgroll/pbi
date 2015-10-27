@@ -10,7 +10,7 @@ public class BadFormatRuntimeError implements IError {
 
   String varString;
 
-  @Override
+  
   public String errorMsg() {
     return "[Error, runtime]\"" + varString + "\" has a bad format";
   }

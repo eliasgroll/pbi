@@ -10,7 +10,7 @@ public class Serin extends AnalogSimulationCommand {
     this.myVarString = varString;
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Simulate data recievement on \"" + myVarString + "\"";
   }

@@ -13,7 +13,7 @@ import de.bse.vm.Machine;
  */
 public class ActivateAdditionalInformation implements ICommand {
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     if (!machine.getSettings().getPrintInfo()) {
       console.printLn("[Info]Activating additional information");
@@ -23,7 +23,7 @@ public class ActivateAdditionalInformation implements ICommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Activating additional information";
   }

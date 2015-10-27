@@ -12,13 +12,13 @@ public class Pot extends AnalogSimulationCommand {
     input = new Input(pin);
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     input.execute(machine, console);
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Simulate a potential-measurement on PIN" + pin.getValue();
   }

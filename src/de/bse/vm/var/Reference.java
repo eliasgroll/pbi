@@ -21,7 +21,7 @@ public class Reference implements IVariable {
    * Gets the value of the reference.
    * @return value of the reference
    */
-  @Override
+  
   public long getValue() {
     return referencedObject.getValue();
   }
@@ -30,7 +30,7 @@ public class Reference implements IVariable {
    * Sets the value of the reference.
    * @param value to be set to
    */
-  @Override
+  
   public void setValue(long value) {
     referencedObject.setValue(value);
   }

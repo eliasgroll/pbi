@@ -6,7 +6,7 @@ public class Pulsin extends AnalogSimulationCommand {
     super(num, varString, pin);
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Simulate a pulse-measurement on PIN" + num;
   }

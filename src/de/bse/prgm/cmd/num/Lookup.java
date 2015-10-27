@@ -15,7 +15,7 @@ public class Lookup extends SelectingCommand {
     super(locationString, varString, values);
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     initVars(machine, console);
     if (location.getValue() < values.length) {
@@ -23,7 +23,7 @@ public class Lookup extends SelectingCommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     String infoMsg = "Searching for the value at position " + locationString
         + " in a list containing the values ";

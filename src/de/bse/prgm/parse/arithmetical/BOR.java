@@ -10,7 +10,7 @@ public class BOR extends ArithmeticalOperator {
   /**
    * Executes the calculation (|) and stores the result in retVal.
    */
-  @Override
+  
   protected void exec() {
     retVal.setValue(leftSide.getValue() |  rightSide.getValue());
   }
@@ -19,7 +19,7 @@ public class BOR extends ArithmeticalOperator {
    * Returns a new BOR instance.
    * @return new BOR instance
    */
-  @Override
+  
   public ArithmeticalOperator create() {
     return new BOR();
   }

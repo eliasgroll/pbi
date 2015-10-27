@@ -15,7 +15,7 @@ public class Lookdown extends SelectingCommand {
     super(locationString, varString, values);
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     initVars(machine, console);
     for (int i = 0; i < values.length; i++) {
@@ -25,7 +25,7 @@ public class Lookdown extends SelectingCommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     String infoMsg = "Searching for " + locationString + " in a list containing the values ";
     for (int i = 0; i < values.length; i++) {

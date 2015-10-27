@@ -10,7 +10,7 @@ public class AmbigousLabelRuntimeError implements IError {
     this.name = name;
   }
 
-  @Override
+  
   public String errorMsg() {
     return "[Error, runtime]Couldn't jump to ambigous label \"" + name + "\"";
   }

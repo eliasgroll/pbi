@@ -10,17 +10,17 @@ import de.bse.vm.Machine;
  */
 public class Shebang implements ICommand {
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     // does nothing
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Shebang succesfully detected";
   }
 
-  @Override
+  
   public String toString() {
     return "STAMP";
   }

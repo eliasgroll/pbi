@@ -27,18 +27,18 @@ public class Goto extends HotspotCompiledCommand {
     this.reference = reference;
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     machine.setExecutionIndex(jumpTo - 1);
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]Resume execution after \"" + getReference() + "\"";
   }
 
-  @Override
+  
   public String toString() {
     return "GOTO";
   }
@@ -46,7 +46,7 @@ public class Goto extends HotspotCompiledCommand {
   /**
    * Searches for the referenced label in the program.
    */
-  @Override
+  
   protected void init(Machine machine) {
     for (int i = 0; i < machine.getProgram().getCommands().size(); i++) {
       if (machine.getProgram().getCommands().get(i) instanceof Label) {

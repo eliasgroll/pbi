@@ -9,7 +9,7 @@ public class Low extends IOCommand {
     super(num);
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     if (pin != null && dir != null) {
@@ -18,13 +18,13 @@ public class Low extends IOCommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]PIN" + num + " and DIR" + num
         + " are now set to 0(LOW) and 1(OUTPUT)";
   }
 
-  @Override
+  
   public String toString() {
     return "LOW";
   }

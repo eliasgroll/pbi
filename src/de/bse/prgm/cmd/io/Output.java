@@ -9,7 +9,7 @@ public class Output extends IOCommand {
     super(num);
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     if (dir != null) {
@@ -17,12 +17,12 @@ public class Output extends IOCommand {
     }
   }
 
-  @Override
+  
   public String infoMsg() {
     return "[Info]DIR" + num + " is now set to 1(OUTPUT)";
   }
 
-  @Override
+  
   public String toString() {
     return "OUTPUT";
   }

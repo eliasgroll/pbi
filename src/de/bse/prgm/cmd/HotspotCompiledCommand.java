@@ -13,7 +13,7 @@ import de.bse.vm.Machine;
 public abstract class HotspotCompiledCommand implements ICommand {
   private boolean firstRun = true;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     if (firstRun) {
       init(machine);

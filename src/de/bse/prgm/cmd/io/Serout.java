@@ -45,7 +45,7 @@ public class Serout implements ICommand {
     }
   }
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     String result = "[SEROUT] ";
     for (String string : data) {
@@ -95,7 +95,7 @@ public class Serout implements ICommand {
     return retString;
   }
   
-  @Override
+  
   public String infoMsg() {
     String infoMsg = "Sending the following data on pin " + String.valueOf(pin)
         + " (with baud-rate " + baudmode + "): " + dataString;

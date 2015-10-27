@@ -6,7 +6,7 @@ import de.bse.vm.var.Byte;
  * EEPROM class which represents the EEPROM of the BS1
  * 
  * @author Elias Groll, Jonas Reichmann
- * @version 10.15
+ * @version 2.15
  */
 public class EEPROM {
 

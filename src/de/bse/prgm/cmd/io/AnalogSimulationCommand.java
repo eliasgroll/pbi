@@ -33,7 +33,7 @@ public abstract class AnalogSimulationCommand extends IOCommand {
   boolean firstRun = true;
   boolean done = false;
 
-  @Override
+  
   public void execute(Machine machine, IConsole console) {
     super.execute(machine, console);
     if (var != null) {
@@ -51,7 +51,7 @@ public abstract class AnalogSimulationCommand extends IOCommand {
     }
   }
 
-  @Override
+  
   public void init(Machine machine) {
     super.init(machine);
     scale = machine.parseIVariable(scaleString);

@@ -20,7 +20,7 @@ public class Bit extends BoolVariable {
    * Returns the state of the Bit in a string.
    * @return state of the bit (1=HIGH or 0 = LOW)
    */
-  @Override
+  
   public String toString() {
     return high ? "1" : "0";
   }

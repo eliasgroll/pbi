@@ -6,7 +6,7 @@ import de.bse.vm.var.format.Formatter;
  * A variable which consists of individually accessible bits.
  * 
  * @author Elias Groll
- * @version 10.15
+ * @version 2.15
  */
 public class ConglomerateVariable implements IVariable {
   /**
