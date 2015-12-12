@@ -1,6 +1,6 @@
-# pbi
+# pbi [Basic Stamp 1 (®) Emulator]
 
-The πBASIC Interpreter [Basic Stamp 1 (®) Emulator]
+The πBASIC Interpreter
 ================
 
 This is a java program that interprets the Basic Stamp 1 Basic language PBasic (®).
