@@ -27,9 +27,8 @@ How to install the IDE
    or `pbi-mac.zip` (Mac - coming soon) and unzip it to a directory of your choice.
 2. Run it on every system with double-clicking the executable (pbi).
 
+Test
 --------------
-<br>
-<br>
 
 ```
 
