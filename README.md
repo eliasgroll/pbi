@@ -28,8 +28,6 @@ How to install the IDE
 2. Run it on every system with double-clicking the executable (pbi).
 
 --------------
-(written by Elias Groll, Jonas Reichmann)
-
 <br>
 <br>
 
