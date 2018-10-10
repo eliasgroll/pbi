@@ -32,7 +32,9 @@ How to install the IDE
 
 <br>
 <br>
+
 ```
+
 ' {$STAMP BS1}
 'language-specific unit test
 
@@ -279,4 +281,5 @@ subsubroutine:
    'BREAKPOINT
    counter = counter + 1
    RETURN
+   
 ```
